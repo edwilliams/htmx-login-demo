@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTMX Demo</title>
+  </head>
+  <body>
+    <button hx-get="/unauthed" hx-swap="outerHTML">unauthed test</button>
+    <button hx-get="/authed" hx-swap="outerHTML">authed test</button>
+    <button hx-get="/logout" hx-swap="outerHTML">logout</button>
+
+    <form hx-post="/login">
+      <input name="username" type="text" placeholder="username" />
+      <input name="password" type="text" placeholder="password" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script src="htmx-1.8.2.min.js"></script>
+  </body>
+</html>
