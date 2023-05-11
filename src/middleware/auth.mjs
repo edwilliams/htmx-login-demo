@@ -4,7 +4,7 @@ export const checkToken = (req, res, next) => {
   const token = req.cookies.auth
 
   if (token) {
-    jwt.verify(token, process.env.JWT_secret, (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
       if (err) {
         return res.send('Token is not valid')
       } else {

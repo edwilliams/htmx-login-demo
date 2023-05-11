@@ -20,12 +20,17 @@ app.post('/login', async (req, res) => {
   const { username, password } = req.body
 
   if (username && password) {
-    if (username === 'admin' && password === 'pass123') {
-      const token = jwt.sign({ username }, process.env.JWT_secret, {
+    if (
+      username === process.env.USERNAME &&
+      password === process.env.PASSWORD
+    ) {
+      const token = jwt.sign({ username }, process.env.JWT_SECRET, {
         expiresIn: '24h',
       })
       res
-        .cookie('auth', token, { expire: Date.now() })
+        .cookie('auth', token, {
+          expire: new Date(Date.now() + 1000 * 60 * 60 * 24),
+        })
         .send('Authentication successful')
     } else {
       res.status(403).send('Incorrect username or password')
