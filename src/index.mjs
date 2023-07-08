@@ -20,10 +20,7 @@ app.post('/login', async (req, res) => {
   const { username, password } = req.body
 
   if (username && password) {
-    if (
-      username === process.env.USERNAME &&
-      password === process.env.PASSWORD
-    ) {
+    if (username === process.env.NAME && password === process.env.PASSWORD) {
       const token = jwt.sign({ username }, process.env.JWT_SECRET, {
         expiresIn: '24h',
       })
